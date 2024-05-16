@@ -1,19 +1,63 @@
-# ddpm训练基于pytorchlightning
-首先，我觉得这个框架用用就会了，其次真的省去了在多卡情况下训练的麻烦。
-但是这个框架也有他的问题，我觉得有些时候并不好用，所以是否要选择学习这个框架需要斟酌
+# DDPM-MNIST-Pytorchlightning
+A simple method to train a ddpm model.
 
-以下流程皆在windows11上，并安装了vs2022
-vs2022非常建议开发者首先安装，这个repo应该是不需要的，但如果做一些比较变态的库安装例如需要编译的一些库的时候，就需要vs2022中的工具链了
-cuda 也是必须的，建议安装cuda 11.8，本repo基于11.8
 
-# first
-use conda to create a env
+## Installation
 
-    conda create -n mnist_ddpm python=3.9
-    conda activate mnist_ddpm
-# 2
-安装 pytorch
-    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+I use the code on Windows with cuda 11.8. By the way, I use an A4500 graphics card, which has 20G of graphics memory.
 
-# 3 安装其他依赖
-    pip install -r requirements.txt
+```bash
+conda create -n mnist_ddpm python=3.9
+conda activate mnist_ddpm
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements.txt
+```
+
+In any case, I recommend that you install the corresponding version of pytorch yourself rather than using any of the commands in any repos.
+
+## Running the Code
+
+I recommend that you read the code before using it and modify the parameters according to your actual situation, such as adjusting the batch size according to the graphics memory.
+
+### Training
+
+```bash
+python train_ddpm.py
+```
+
+There are some hyperparameters to tune.
+
+* learning_rate
+* T=1000
+* epoch
+* ...
+
+However, the task is so simple that little tuning of hyperparameters is required.
+
+### Testing
+```bash
+python predict_ddpm.py
+```
+![image](https://github.com/xiaoc57/ddpm_mnist_pl/blob/master/assets/result.gif)
+
+## References
+1. [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
+2. [63、必看！概率扩散模型(DDPM)与分数扩散模型(SMLD)的联系与区别](https://www.bilibili.com/video/BV1QG4y1674Q/?p=1&spm_id_from=pageDriver)
+3. [Github Unofficial PyTorch implementation Denoising Diffusion Probabilistic Models](https://github.com/w86763777/pytorch-ddpm)
+4. [pytorchlightning reference: how to implement instant ngp using pl](https://github.com/kwea123/ngp_pl)
+
+## Citations
+
+```bibtex
+@misc{ho2020denoising,
+    title   = {Denoising Diffusion Probabilistic Models},
+    author  = {Jonathan Ho and Ajay Jain and Pieter Abbeel},
+    year    = {2020},
+    eprint  = {2006.11239},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.LG}
+}
+```
+
+
+
