@@ -1,3 +1,5 @@
 tqdm
 einops
+imageio
+matplotlib
 lightning==2.2.1
