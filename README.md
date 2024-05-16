@@ -38,7 +38,12 @@ However, the task is so simple that little tuning of hyperparameters is required
 ```bash
 python predict_ddpm.py
 ```
+<div align=center> 
+
 ![image](https://github.com/xiaoc57/ddpm_mnist_pl/blob/master/assets/result.gif)
+
+</div>
+
 
 ## References
 1. [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
